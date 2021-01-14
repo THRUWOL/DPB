@@ -6,13 +6,14 @@ import os
 from discord.ext import commands
 from discord import Member, Guild
 
+PARROT_CHANNEL_ID = 796677661577314375
+
 sql = sqlite3.connect('server.db')
 cursor = sql.cursor()
 
 class all_commands(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
-
     @commands.command(pass_context = True)
     @commands.has_permissions(view_audit_log = True)
     async def clear(self,ctx,amount = 0,reason = None):
@@ -42,7 +43,7 @@ class all_commands(commands.Cog):
 
     @commands.Cog.listener("on_message")
     async def parrot(self,message):
-        channel = self.bot.get_channel(796677661577314379) #канал, куда улетают дублированные сообщения
+        channel = self.bot.get_channel(PARROT_CHANNEL_ID) #канал, куда улетают дублированные сообщения
         if message.author.bot:  #не дублирует сообщения от бота (иначе будет рекурсия)
             pass
         else:  #если сообщение не от бота, то оно дублируется ботом
