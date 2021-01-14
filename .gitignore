@@ -3,3 +3,4 @@
 BOT/secret/db.py
 BOT/secret/token.py
 server.db
+BOT/secret/settings.py
