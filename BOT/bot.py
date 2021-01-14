@@ -3,13 +3,14 @@ import discord
 from discord.ext import commands
 from discord import Member, Guild
 
-import secret.token as token
+import secret.settings as settings
 
 client = commands.Bot(command_prefix='.')
 
 extensions = [
     'secret.db',
-    'commands.main'
+    'commands.main',
+    'games.minesweeper'
 ]
 
 if __name__ == '__main__':
@@ -18,4 +19,4 @@ if __name__ == '__main__':
 
 
 print("bot.py started")
-client.run(token.TOKEN)
+client.run(settings.TOKEN)
